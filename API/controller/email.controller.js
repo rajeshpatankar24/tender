@@ -6,7 +6,7 @@ function senMail(email,password)
    service: 'gmail',
     auth: {
     user: 'rajeshpatankar24@gmail.com',
-    pass: 'vvfz djgv xttu twvu'
+    pass: 'xxxxxxxxx'
   }
 });
 
