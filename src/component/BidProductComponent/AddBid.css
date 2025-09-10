@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/* Highlight Table Row on Hover */
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Styling for Bid Button */
+.btn-bid {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+}
+
+/* Change Button Color on Hover */
+.btn-bid:hover {
+    background-color: #c82333;
+}
+
+/* Styling for Input Field */
+.form-control:focus {
+    border-color: #ff5722;
+    box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+}
+
+/* Styling for the Output Text */
+.output-text {
+    color: blue;
+    font-weight: bold;
+    margin-bottom: 15px;
+}

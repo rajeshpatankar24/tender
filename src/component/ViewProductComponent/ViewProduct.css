@@ -1,0 +1,43 @@
+
+#ptable {
+    margin-top: 50px;
+    width: 80%;
+}
+
+#ptable td {
+    padding: 10px;
+}
+
+/* Image in the table */
+#ptable img {
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.btn-bid-open {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-bid-open:hover {
+    background-color: #218838;
+}
+
+.btn-bid-closed {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+
+/* Table row hover effect */
+#ptable tr:hover {
+    background-color: #f8f9fa;
+}

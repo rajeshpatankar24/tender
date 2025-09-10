@@ -1,0 +1,49 @@
+.category-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.category-card .card-body {
+    padding: 1.5rem;
+}
+
+.category-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Add some padding to the section */
+.container-xxl {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Text and title styling */
+.text-secondary {
+    color: #6c757d;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .category-card {
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,17 @@
+/*  CSS to create the fade-out effect */
+.fade-out {
+    animation: fadeOut 5s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
