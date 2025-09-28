@@ -1,4 +1,3 @@
-
 import './Login.css';
 import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
@@ -11,11 +10,11 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // 👈 New state
   const [output, setOutput] = useState('');
-  const [isSuccess, setIsSuccess] = useState(null); // New state for success/error flag
+  const [isSuccess, setIsSuccess] = useState(null);
   const loginSectionRef = useRef();
 
-  // Scroll to the login section when the component mounts
   useEffect(() => {
     if (loginSectionRef.current) {
       loginSectionRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -29,14 +28,14 @@ function Login() {
       return;
     }
 
-    const userDetails = { "email": email, "password": password };
+    const userDetails = { email, password };
 
     axios.post(__urlapi + "login", userDetails)
       .then((response) => {
         setEmail("");
         setPassword("");
         setOutput("Login successful!");
-        setIsSuccess(true); // Mark success
+        setIsSuccess(true);
         toast.success('Login successful!');
 
         const user = response.data.userdetails;
@@ -50,12 +49,10 @@ function Login() {
         localStorage.setItem("role", user.role);
         localStorage.setItem("info", user.info);
 
-        // Navigate to the appropriate dashboard based on role
-        (user.role === "admin") ? navigate("/admin") : navigate("/user");
-
+        navigate(user.role === "admin" ? "/admin" : "/user");
       })
       .catch((error) => {
-        setIsSuccess(false); // Mark error
+        setIsSuccess(false);
         setOutput("Invalid email or incorrect password");
         toast.error('Invalid email or password!');
       });
@@ -65,13 +62,18 @@ function Login() {
     <>
       <div ref={loginSectionRef} className="container-xxl py-5" id="login">
         <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-          <div className="row g-5 w-100" style={{ paddingLeft: '350px' }}>
-            <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-              <h1 className="display-5 mb-4 text-center">Login <span className="text-success">Here!!!</span></h1>
-              {/* Show output message with color based on success */}
-              <span style={{ color: isSuccess === null ? 'initial' : isSuccess ? 'green' : 'red' }}>
-                {output}
-              </span>
+          <div className="row justify-content-center w-100 g-5">
+            <div className="col-12 col-md-8 col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+              <h1 className="display-5 mb-4 text-center">
+                Login <span className="text-success">Here!!!</span>
+              </h1>
+
+              {output && (
+                <div className={`alert ${isSuccess ? 'alert-success' : 'alert-danger'}`}>
+                  {output}
+                </div>
+              )}
+
               <form>
                 <div className="form-group mb-3">
                   <label htmlFor="email">Email address:</label>
@@ -83,25 +85,40 @@ function Login() {
                     placeholder="Enter your email"
                   />
                 </div>
-                <div className="form-group mb-3">
+
+                <div className="form-group mb-2">
                   <label htmlFor="pwd">Password:</label>
                   <input
-                    type="password"
+                    type={showPassword ? 'text' : 'password'} // 👈 Toggle type
                     className="form-control"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
                     placeholder="Enter your password"
                   />
                 </div>
-                <div>
-                  <button
-                    type="button"
-                    className="btn btn-success w-100"
-                    onClick={handleSubmit}>
-                    Login
-                  </button>
-                  <ToastContainer />
+
+                {/* ✅ Show Password Toggle */}
+                <div className="form-check mb-3">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="showPassword"
+                    checked={showPassword}
+                    onChange={() => setShowPassword(!showPassword)}
+                  />
+                  <label className="form-check-label" htmlFor="showPassword">
+                    Show Password
+                  </label>
                 </div>
+
+                <button
+                  type="button"
+                  className="btn btn-success w-100"
+                  onClick={handleSubmit}>
+                  Login
+                </button>
+
+                <ToastContainer />
               </form>
             </div>
           </div>
@@ -112,27 +129,3 @@ function Login() {
 }
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// (user.role =="admin")?navigate("/admin"):navigate("/user");

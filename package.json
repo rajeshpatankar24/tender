@@ -6,6 +6,7 @@
     "axios": "^1.7.9",
     "cors": "^2.8.5",
     "cra-template": "1.2.0",
+    "dotenv": "^17.2.2",
     "jquery": "^3.7.1",
     "owl.carousel": "^2.3.4",
     "react": "^19.0.0",
