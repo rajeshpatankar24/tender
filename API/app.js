@@ -25,6 +25,6 @@ app.use("/bid",bidRouter);
 
 const PORT= process.env.PORT
 app.listen(PORT);
-console.log("Server invoked at link http://localhost:",PORT);
+console.log("Server invoked at :",PORT);
 
 
