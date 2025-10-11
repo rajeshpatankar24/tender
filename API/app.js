@@ -2,6 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import expressFileupload from 'express-fileupload';
+import { configDotenv } from 'dotenv';
 const app = express();
 // to link route
 import userRouter from './router/user.router.js';
@@ -22,8 +23,8 @@ app.use("/subcategory",subcategoryRouter);
 app.use("/product",productRouter);
 app.use("/bid",bidRouter);
 
-
-app.listen(3001);
-console.log("Server invoked at link http://localhost:3001");
+const PORT= process.env.PORT || 5001
+app.listen(PORT);
+console.log("Server invoked at link http://localhost:",PORT);
 
 

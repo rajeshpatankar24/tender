@@ -1,6 +1,8 @@
-
+import dotenv from 'dotenv'
 import mongoose from 'mongoose';
-const url = 'mongodb://localhost:27017/tender'; // database coonection
+
+dotenv.config()
+const url = process.env.MONGO_URI; // database coonection
 mongoose.connect(url).then(()=>{
     console.log("Successfully conected to mongodb database...");
 }).catch((error)=>{
