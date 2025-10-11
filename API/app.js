@@ -23,7 +23,7 @@ app.use("/subcategory",subcategoryRouter);
 app.use("/product",productRouter);
 app.use("/bid",bidRouter);
 
-const PORT= process.env.PORT || 5001
+const PORT= process.env.PORT
 app.listen(PORT);
 console.log("Server invoked at link http://localhost:",PORT);
 
