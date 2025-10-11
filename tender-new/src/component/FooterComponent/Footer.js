@@ -1,5 +1,7 @@
+import Newsletter from '../NewsLettercomponent/Newsletter.js';
 import './Footer.css';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -85,22 +87,15 @@ function Footer() {
                                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
                                         </div>
                                     </div>
-
+<div className="col-lg-4 col-md-6">
+      <h4 className="text-light mb-4">Quick Links</h4>
+      <Link className="btn btn-link" to="/">Home</Link>
+      <Link className="btn btn-link" to="/about">About</Link>
+      <Link className="btn btn-link" to="/services">Services</Link>
+      <Link className="btn btn-link" to="/contact">Contact</Link>
+    </div>
                                     <div class="col-lg-4 col-md-6">
-                                        <h4 class="text-light mb-4">Quick Links</h4>
-                                        <a class="btn btn-link" href="">Home</a>
-                                        <a class="btn btn-link" href="">About</a>
-                                        <a class="btn btn-link" href="">Services</a>
-                                        <a class="btn btn-link" href="">About us</a>
-
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <h4 class="text-light mb-4">Newsletter</h4>
-                                        <p>Go for Tenders .</p>
-                                        <div class="position-relative mx-auto" style={{ "max-width": "400px" }}>
-                                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
-                                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                                        </div>
+                                        <Newsletter/>
                                     </div>
                                 </div>
                             </div>

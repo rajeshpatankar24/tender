@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // 👈 New state
+  const [showPassword, setShowPassword] = useState(false);
   const [output, setOutput] = useState('');
   const [isSuccess, setIsSuccess] = useState(null);
   const loginSectionRef = useRef();
@@ -36,7 +36,7 @@ function Login() {
         setPassword("");
         setOutput("Login successful!");
         setIsSuccess(true);
-        toast.success('Login successful!');
+        toast.success('Login successful! 🎉');
 
         const user = response.data.userdetails;
         localStorage.setItem("token", response.data.token);
@@ -51,77 +51,81 @@ function Login() {
 
         navigate(user.role === "admin" ? "/admin" : "/user");
       })
-      .catch((error) => {
+      .catch(() => {
         setIsSuccess(false);
         setOutput("Invalid email or incorrect password");
-        toast.error('Invalid email or password!');
+        toast.error('Invalid email or password ❌');
       });
   };
 
   return (
     <>
-      <div ref={loginSectionRef} className="container-xxl py-5" id="login">
-        <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-          <div className="row justify-content-center w-100 g-5">
-            <div className="col-12 col-md-8 col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-              <h1 className="display-5 mb-4 text-center">
-                Login <span className="text-success">Here!!!</span>
-              </h1>
+      <div ref={loginSectionRef} className="login-page">
+        <div className="login-card shadow-lg p-4 rounded-4">
+          <h2 className="text-center fw-bold mb-4">
+            Welcome Back 
+          </h2>
+          <p className="text-center text-muted mb-4">
+            Please login to your account
+          </p>
 
-              {output && (
-                <div className={`alert ${isSuccess ? 'alert-success' : 'alert-danger'}`}>
-                  {output}
-                </div>
-              )}
-
-              <form>
-                <div className="form-group mb-3">
-                  <label htmlFor="email">Email address:</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div className="form-group mb-2">
-                  <label htmlFor="pwd">Password:</label>
-                  <input
-                    type={showPassword ? 'text' : 'password'} // 👈 Toggle type
-                    className="form-control"
-                    onChange={e => setPassword(e.target.value)}
-                    value={password}
-                    placeholder="Enter your password"
-                  />
-                </div>
-
-                {/* ✅ Show Password Toggle */}
-                <div className="form-check mb-3">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="showPassword"
-                    checked={showPassword}
-                    onChange={() => setShowPassword(!showPassword)}
-                  />
-                  <label className="form-check-label" htmlFor="showPassword">
-                    Show Password
-                  </label>
-                </div>
-
-                <button
-                  type="button"
-                  className="btn btn-success w-100"
-                  onClick={handleSubmit}>
-                  Login
-                </button>
-
-                <ToastContainer />
-              </form>
+          {output && (
+            <div className={`alert ${isSuccess ? 'alert-success' : 'alert-danger'}`}>
+              {output}
             </div>
-          </div>
+          )}
+
+          <form>
+            <div className="form-group mb-3">
+              <label htmlFor="email" className="fw-semibold">Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                onChange={e => setEmail(e.target.value)}
+                value={email}
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div className="form-group mb-2">
+              <label htmlFor="pwd" className="fw-semibold">Password</label>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className="form-control"
+                onChange={e => setPassword(e.target.value)}
+                value={password}
+                placeholder="Enter your password"
+              />
+            </div>
+
+            <div className="form-check mb-3">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="showPassword"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+              />
+              <label className="form-check-label" htmlFor="showPassword">
+                Show Password
+              </label>
+            </div>
+
+            <button
+              type="button"
+              className="btn btn-success w-100 fw-semibold py-2"
+              onClick={handleSubmit}>
+              Login
+            </button>
+
+            <div className="text-center mt-3">
+              <small className="text-muted">
+                Don’t have an account? <a href="/register" className="text-success fw-semibold">Register</a>
+              </small>
+            </div>
+          </form>
+
+          <ToastContainer />
         </div>
       </div>
     </>

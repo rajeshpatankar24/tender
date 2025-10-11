@@ -1,1 +1,43 @@
 
+/* Beautiful gradient background */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e9eee9, #ced2ce);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* Center card with animation */
+.login-card {
+  background: #ffffff;
+  max-width: 420px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Input and button styles */
+.form-control {
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.btn-success {
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #1f8e46;
+}
+
+/* Label spacing */
+label {
+  margin-bottom: 6px;
+}

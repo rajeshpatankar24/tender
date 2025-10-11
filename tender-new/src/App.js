@@ -1,12 +1,12 @@
 import './App.css';
-import {Route,Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './component/HeaderComponent/Header';
 import Nav from './component/NavComponent/Nav';
 import Content from './component/ContentComponent/Content';
 import Footer from './component/FooterComponent/Footer';
 import About from './component/AboutComponent/About';
 import Contact from './component/ContactComponent/Contact';
- import Services from './component/ServicesComponent/Services';
+import Services from './component/ServicesComponent/Services';
 import Register from './component/RegisterComponent/Register';
 import Login from './component/LoginComponent/Login';
 import Carousel from './component/CarouselComponent/Carousel';
@@ -28,47 +28,56 @@ import AddBid from './component/BidProductComponent/AddBid';
 import ViewBidProduct from './component/ViewBidProductComponent/ViewBidProduct';
 import ViewBid from './component/ViewBidComponent/ViewBid';
 import Verify from './component/VerifyComponent/verify';
-
-
+import HeroContent from './component/HeroComponent/HeroContent';
 
 function App() {
+  const location = useLocation();
+
+  // Hide carousel only on specific paths
+  const hideCarouselPaths = ["/login", "/register", "/verify"];
+  const hideCarousel = hideCarouselPaths.some((path) =>
+    location.pathname.startsWith(path)
+  );
+
   return (
     <>
-    <Header />
-    <Nav />
-    <Carousel />
-    
-     <Routes>
-     <Route path="/" element={<Content />}></Route>
-     <Route path="/about" element={<About/>}></Route>
-     <Route path="/contact" element={<Contact/>}></Route>
-     <Route path="/services" element={<Services/>}></Route> 
-     <Route path="/register" element={<Register/>}></Route>
-     <Route path="/login"  element={<Login/>}></Route>
-     <Route path="/logout" element={<Logout/>}></Route>
-     <Route path="/admin" element={<Admin/>}></Route>
-     <Route path="/addcategory" element={<Category/>}></Route>
-     <Route path="/addsubcategory" element={<Addsubcategory />}></Route>
-     <Route path="/manageuser" element={<ManageUser/>}></Route>
-     <Route path="/cpadmin" element={<CPAdmin/>}></Route>
-     <Route path="/epadmin" element={<EPAdmin/>}></Route>
-     <Route path="/user" element={<User/>}></Route>
-     <Route path = "/viewcategory" element ={ <ViewCategory />}></Route>
-     <Route path = "/viewscategory/:Cname" element ={ <ViewSubCategory />}></Route>
-     <Route path = "/viewp" element ={ < AddTender/>}></Route>
-     <Route path = "/viewproduct/:subcatnm" element ={ <ViewProduct/>}></Route>
-     <Route path = "/bidproduct/:_id" element ={ <AddBid/>}></Route>
-     <Route path = "/viewbidp" element ={ <ViewBidProduct/>}></Route>
-     <Route path = "/viewbid/:_id" element ={ <ViewBid/>}></Route>
-     <Route path="/cpuser" element={<CPUser/>}></Route>
-     <Route path="/epuser" element={<EPUser/>}></Route>
-     <Route path="/verify/:email" element={<Verify/>}></Route>
+      {/* Always visible */}
+      <Header />
+      <Nav />
 
-    </Routes>
+      {/* Carousel visible only when not on login/register/verify */}
+      {!hideCarousel && <Carousel />}
 
-    <Footer /> 
-    </>  
-   
+      <Routes>
+        <Route path="/" element={<Content />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/addcategory" element={<Category />} />
+        <Route path="/addsubcategory" element={<Addsubcategory />} />
+        <Route path="/manageuser" element={<ManageUser />} />
+        <Route path="/cpadmin" element={<CPAdmin />} />
+        <Route path="/epadmin" element={<EPAdmin />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/viewcategory" element={<ViewCategory />} />
+        <Route path="/viewscategory/:Cname" element={<ViewSubCategory />} />
+        <Route path="/viewp" element={<AddTender />} />
+        <Route path="/viewproduct/:subcatnm" element={<ViewProduct />} />
+        <Route path="/bidproduct/:_id" element={<AddBid />} />
+        <Route path="/viewbidp" element={<ViewBidProduct />} />
+        <Route path="/viewbid/:_id" element={<ViewBid />} />
+        <Route path="/cpuser" element={<CPUser />} />
+        <Route path="/epuser" element={<EPUser />} />
+        <Route path="/verify/:email" element={<Verify />} />
+      </Routes>
+
+      {/* Always visible */}
+      <Footer />
+    </>
   );
 }
 

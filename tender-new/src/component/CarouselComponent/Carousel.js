@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import './Carousel.css'
+
 
 const Carousel = () => {
 
@@ -81,7 +83,7 @@ const Carousel = () => {
           <div className="position-relative">
             <img
               className="img-fluid"
-              src="/assets/img/slide-2.jpg"
+              src="/assets/img/slide-1.jpg"
               alt="Slide 2"
             />
             <div

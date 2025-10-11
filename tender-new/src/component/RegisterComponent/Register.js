@@ -16,6 +16,7 @@ function Register() {
   const [output, setOutput] = useState('');
   const [errors, setErrors] = useState({});
 
+  // ---------------- VALIDATION ----------------
   const validate = () => {
     const newErrors = {};
 
@@ -29,18 +30,17 @@ function Register() {
     else if (password.length < 6) newErrors.password = 'Password must be at least 6 characters';
 
     if (!mobile.trim()) newErrors.mobile = 'Mobile number is required';
-    else if (!/^[6-9]\d{9}$/.test(mobile)) newErrors.mobile = 'Enter valid 10-digit Indian mobile number';
+    else if (!/^[6-9]\d{9}$/.test(mobile)) newErrors.mobile = 'Enter valid 10-digit mobile number';
 
     if (!address.trim()) newErrors.address = 'Address is required';
-
     if (!city) newErrors.city = 'City is required';
-
     if (!gender) newErrors.gender = 'Gender is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // ---------------- SUBMIT ----------------
   const handleSubmit = () => {
     const userDetails = {
       name,
@@ -67,15 +67,16 @@ function Register() {
         setAddress('');
         setCity(null);
         setGender('');
-        setOutput('User registered successfully!');
+        setOutput('✅ User registered successfully!');
         setErrors({});
       })
       .catch((error) => {
         console.error(error);
-        setOutput('User registration failed.');
+        setOutput('❌ User registration failed.');
       });
   };
 
+  // ---------------- FETCH CITY DATA ----------------
   useEffect(() => {
     axios
       .post('https://countriesnow.space/api/v0.1/countries/cities', {
@@ -94,114 +95,150 @@ function Register() {
   }, []);
 
   return (
-    <div className="container-xxl py-5">
+    <div className="register-section d-flex align-items-center justify-content-center py-5 bg-light">
       <div className="container">
-        <div className="row justify-content-center g-5">
-          <div className="col-12 col-md-10 col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-            <h1 className="display-5 mb-4 text-center">
-              Register <span className="text-primary">Here!!!</span>
-            </h1>
-            <form>
-              {output && <p className="alert alert-success">{output}</p>}
+        <div className="row justify-content-center">
+          <div className="col-lg-6 col-md-8">
+            <div className="card shadow-lg border-0 rounded-4 p-4 p-md-5 bg-white">
+              <h2 className="text-center mb-4 fw-bold text-primary">Create Your Account</h2>
+              {output && (
+                <div className={`alert ${output.includes('✅') ? 'alert-success' : 'alert-danger'}`}>
+                  {output}
+                </div>
+              )}
 
+              {/* NAME */}
               <div className="form-group mb-3">
-                <label htmlFor="name">Name:</label>
+                <label className="fw-semibold">Full Name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  placeholder="Enter your full name"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                 />
                 {errors.name && <small className="text-danger">{errors.name}</small>}
               </div>
 
+              {/* EMAIL */}
               <div className="form-group mb-3">
-                <label htmlFor="email">Email address:</label>
+                <label className="fw-semibold">Email Address</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  placeholder="example@gmail.com"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
                 {errors.email && <small className="text-danger">{errors.email}</small>}
               </div>
 
+              {/* PASSWORD */}
               <div className="form-group mb-3">
-                <label htmlFor="pwd">Password:</label>
+                <label className="fw-semibold">Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  placeholder="Enter password"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                 />
                 {errors.password && <small className="text-danger">{errors.password}</small>}
               </div>
 
+              {/* MOBILE */}
               <div className="form-group mb-3">
-                <label htmlFor="mobile">Mobile:</label>
+                <label className="fw-semibold">Mobile Number</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  placeholder="10-digit mobile number"
                   onChange={(e) => setMobile(e.target.value)}
                   value={mobile}
                 />
                 {errors.mobile && <small className="text-danger">{errors.mobile}</small>}
               </div>
 
+              {/* ADDRESS */}
               <div className="form-group mb-3">
-                <label htmlFor="address">Address:</label>
+                <label className="fw-semibold">Address</label>
                 <textarea
-                  rows="5"
-                  className="form-control"
+                  rows="3"
+                  className="form-control form-control-lg"
+                  placeholder="Enter your full address"
                   onChange={(e) => setAddress(e.target.value)}
                   value={address}
                 ></textarea>
                 {errors.address && <small className="text-danger">{errors.address}</small>}
               </div>
 
+              {/* CITY */}
               <div className="form-group mb-3">
-                <label htmlFor="city">City:</label>
+                <label className="fw-semibold">City</label>
                 <Select
                   options={cityOptions}
                   value={city}
                   onChange={setCity}
                   placeholder="Search or select city"
                   isClearable
+                  styles={{
+                    control: (base) => ({
+                      ...base,
+                      padding: '4px',
+                      borderRadius: '8px',
+                    }),
+                  }}
                 />
                 {errors.city && <small className="text-danger">{errors.city}</small>}
               </div>
 
-              <div className="form-group mb-3">
-                <label htmlFor="gender">Gender:</label>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    onChange={(e) => setGender(e.target.value)}
-                    checked={gender === 'male'}
-                  />
-                  <label className="form-check-label">Male</label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    onChange={(e) => setGender(e.target.value)}
-                    checked={gender === 'female'}
-                  />
-                  <label className="form-check-label">Female</label>
+              {/* GENDER */}
+              <div className="form-group mb-4">
+                <label className="fw-semibold d-block mb-2">Gender</label>
+                <div className="d-flex gap-4">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      onChange={(e) => setGender(e.target.value)}
+                      checked={gender === 'male'}
+                    />
+                    <label className="form-check-label">Male</label>
+                  </div>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      onChange={(e) => setGender(e.target.value)}
+                      checked={gender === 'female'}
+                    />
+                    <label className="form-check-label">Female</label>
+                  </div>
                 </div>
                 {errors.gender && <small className="text-danger">{errors.gender}</small>}
               </div>
 
-              <button type="button" className="btn btn-success w-100 mt-3" onClick={handleSubmit}>
-                Submit
+              {/* BUTTON */}
+              <button
+                type="button"
+                className="btn btn-primary btn-lg w-100 shadow-sm"
+                onClick={handleSubmit}
+              >
+                Register Now
               </button>
-            </form>
+
+              {/* Redirect Link */}
+              <p className="text-center mt-3 mb-0">
+                Already have an account?{' '}
+                <a href="/login" className="text-decoration-none text-primary fw-semibold">
+                  Login here
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
