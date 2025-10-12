@@ -27,8 +27,8 @@ app.use('/category',categoryRouter);
 app.use("/subcategory",subcategoryRouter);
 app.use("/product",productRouter);
 app.use("/bid",bidRouter);
-app.use('/newsletter', newsletterModel);
-app.use('/contact', contactRouter);
+// app.use('/newsletter', newsletterModel);
+// app.use('/contact', contactRouter);
 
 const PORT= process.env.PORT
 app.listen(PORT);
