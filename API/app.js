@@ -12,8 +12,8 @@ import categoryRouter from './router/category.router.js';
 import subcategoryRouter from './router/subCategory.router.js'
 import productRouter from './router/product.router.js';
 import bidRouter from './router/bid.router.js'
-import newsletterModel from './model/newsletter.model.js';
-import contactRouter from './model/contact.model.js'
+// import newsletterModel from './model/newsletter.model.js';
+// import contactRouter from './model/contact.model.js'
 
 // for crose origin ( different port handle)
 app.use(cors());
