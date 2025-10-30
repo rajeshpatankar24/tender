@@ -12,7 +12,7 @@ export const save =async (req,res)=>{
     var userList = await UserSchemaModel.find();// find all users
     var l = userList.length;    
     var _id = l==0?1:userList[l-1]._id+1; // increment id if list is not empty and userList[l-1] returns a id value,after that id increment by 1
-    const userDetails = {...req.body,"_id":_id,"status":0,"role":"user","info":Date()};
+    const userDetails = {...req.body,"_id":_id,"status":1,"role":"user","info":Date()};
     const password = userDetails.password;
     // const hashedPassword = await bcrypt.hash(password, 10);
     // userDetails.password = hashedPassword;
