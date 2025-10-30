@@ -1,0 +1,68 @@
+/* 
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e9eee9, #ced2ce);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+
+.login-card {
+  background: #ffffff;
+  max-width: 420px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+ */
+
+.form-control {
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+  
+
+.btn-success {
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #1f8e46;
+} 
+
+/* Label spacing */
+label {
+  margin-bottom: 6px;
+}
+/* Login.css */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 100px 15px 40px; /* Add top padding to avoid navbar overlap */
+}
+
+/* Adjust padding on smaller screens */
+@media (max-width: 768px) {
+  .login-page {
+    padding-top: 120px; /* More space for mobile navbar/hamburger */
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 15px;
+}

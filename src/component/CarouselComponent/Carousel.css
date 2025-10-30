@@ -1,0 +1,51 @@
+
+/* --- Carousel Fixes --- */
+.swiper-slide img {
+  width: 100%;
+  height: 100vh; /* full viewport height on desktop */
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .swiper-slide img {
+    height: 70vh; /* smaller height for tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .swiper-slide img {
+    height: 60vh; /* even smaller for phones */
+    object-position: center; /* center image crop */
+  }
+
+  .swiper-slide h1 {
+    font-size: 1.8rem !important;
+    line-height: 2.2rem;
+  }
+
+  .swiper-slide h5 {
+    font-size: 0.9rem !important;
+  }
+
+  .swiper-slide p {
+    font-size: 0.9rem !important;
+  }
+
+  .swiper-slide .btn {
+    padding: 8px 16px !important;
+    font-size: 0.85rem;
+  }
+
+  .swiper-slide .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .swiper-slide .row {
+    margin: 0 !important;
+  }
+
+  .swiper-slide .col-10 {
+    width: 100% !important;
+  }
+}
