@@ -18,7 +18,7 @@ function Nav() {
               <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
 
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#"> <h3 class="text-success m-0">Bid<span className="color-b" style={{ "color": "black " }}>Pro</span></h3></a>
+                  <a class="navbar-brand" href="#"> <h4 className="text-gray m-0">TECHSOL </h4></a>
                   {/* <a className="navbar-brand text-brand" href="index.html">TEN<span className="color-b">DER</span></a> */}
 
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -71,9 +71,9 @@ function Nav() {
               <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 py-lg-0 px-lg-4">
                 <div className="container-fluid">
                   <a className="navbar-brand" href="#">
-                    <h3 className="text-success m-0">
-                      Bid<span className="text-dark">Pro</span>
-                    </h3>
+                    <h4 className="text-gray m-0">
+                      TECHSOL
+                    </h4>
                   </a>
 
                   <button
@@ -180,7 +180,7 @@ function Nav() {
               <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
 
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#"> <h2 class="text-success m-0">Bid<span className="color-b" style={{ "color": "black " }}>Pro</span></h2></a>
+                  <a class="navbar-brand" href="#"> <h4 className="text-gray m-0">TECHSOL </h4></a>
                   {/* <a className="navbar-brand text-brand" href="index.html">TEN<span className="color-b">DER</span></a> */}
 
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
